@@ -18,7 +18,9 @@ def test_transform(size, crop):
     if crop:
         transform_list.append(transforms.CenterCrop(size))
     transform_list.append(transforms.ToTensor())
+    transform_list.append(transforms.Lambda(lambda x: x.repeat(1,3,1,1)))
     transform = transforms.Compose(transform_list)
+
     return transform
 
 
