@@ -12,9 +12,8 @@ from function import adaptive_instance_normalization, coral
 
 
 def _expand_grayscale(tensor):
-    print(tensor.shape)
-    if tensor.shape[1] == 1: # B, C, H, W
-        return tensor.repeat(1,3,1,1)
+    if tensor.shape[1] == 1: # C, H, W
+        return tensor.repeat(3,1,1)
     return tensor
 
 def test_transform(size, crop):
